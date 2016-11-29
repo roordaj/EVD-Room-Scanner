@@ -1,6 +1,7 @@
 package primalpond.com.sensibleopencv;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,8 +10,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -77,6 +80,15 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
                     new String[]{Manifest.permission.CAMERA},
                     CAMERA_PERMISSIONS_REQUEST);
         }
+
+        final Button cancel_btn = (Button) findViewById(R.id.cancel_button);
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getBaseContext(), RecentScans.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
